@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-around',
     alignItems: 'center',
     borderBottom: '1px solid #e5e5e5',
-    padding: '20px 0',
+    padding: '26px 0',
     fontSize: 14,
     '&:nth-child(2n)': {
       backgroundColor: '#f5f5f5',

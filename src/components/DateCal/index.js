@@ -16,12 +16,30 @@ const WEEK_DAY = {
 };
 
 const useStyles = makeStyles((theme) => ({
-  root: {},
-  item: {
+  root: {
+    width: '100%',
+    maxWidth: 520,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+  },
+  list: {
+    width: '100%',
+    marginTop: 16,
+  },
+  head: {
+    width: '100%',
     display: 'flex',
     justifyContent: 'space-around',
     alignItems: 'center',
-    borderBottom: '1px solid #ccc',
+  },
+  item: {
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    borderBottom: '1px solid #e5e5e5',
     padding: '20px 0',
   },
 }));
@@ -41,7 +59,7 @@ export default function DateCal() {
 
   console.log('selectedDate:', selectedDate);
   return (
-    <div>
+    <div className={classes.root}>
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <DateTimePicker
           margin='normal'
@@ -55,27 +73,27 @@ export default function DateCal() {
           }}
         />
       </MuiPickersUtilsProvider>
-      {dateList.map((d) => {
-        const currDate = d;
-        const nyDate = dayjs(currDate).subtract(12, 'hour');
+      <div className={classes.list}>
+        <div className={classes.head}>
+          <h3>北京时间: </h3>
+          <h3>纽约时间: </h3>
+        </div>
+        {dateList.map((d) => {
+          const currDate = d;
+          const nyDate = dayjs(currDate).subtract(12, 'hour');
 
-        return (
-          <div className={`date-item ${classes.item}`}>
-            <div>
-              <h3>北京时间: </h3>
+          return (
+            <div className={`date-item ${classes.item}`}>
               <div>
                 {getDayOfWeek(currDate)} {dayjs(currDate).format(FORMATE)}
               </div>
-            </div>
-            <div>
-              <h3>纽约时间: </h3>
               <div>
                 {getDayOfWeek(nyDate)} {nyDate.format(FORMATE)}
               </div>
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   );
 }

@@ -29,6 +29,7 @@
       "react-app/jest"
     ]
   },
+  "homepage": "https://andesome.github.io/date-converter",
   "browserslist": {
     "production": [
       ">0.2%",
